@@ -125,3 +125,43 @@ function main6() {
     console.log(isitBST(bst1))
 }
 
+function main7() {
+
+    function largNode(bst) {
+        let node = bst;
+        let j = true
+        while (j) {
+            if (node.right !== null) {
+                node = node.right
+            }
+            else {
+                j = false
+            }
+        }
+        return node
+    }
+
+    function thirdLarg(bst) {
+        let workingbst = bst;
+        let firstLargNode = largNode(workingbst)
+        workingbst.remove(firstLargNode.getKey())
+        let secondLargNode = largNode(workingbst)
+        workingbst.remove(secondLargNode.getKey())
+        let thirdLargNode = largNode(workingbst)
+        return thirdLargNode.getKey()
+
+
+    }
+
+    let bst1 = new BST
+    bst1.insert(3, true)
+    bst1.insert(1, true)
+    bst1.insert(4, true)
+    bst1.insert(6, true)
+    bst1.insert(9, true)
+    bst1.insert(2, true)
+    bst1.insert(5, true)
+    bst1.insert(7, true)
+    console.log(thirdLarg(bst1))
+}
+
